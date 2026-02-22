@@ -4,7 +4,7 @@ import { Instagram, MessageCircle, Github } from 'lucide-react';
 
 const Footer: React.FC = () => {
     return (
-        <footer className="w-full border-t border-slate-200 dark:border-slate-800 bg-white/50 dark:bg-slate-950/50 backdrop-blur-xl py-12 mt-auto">
+        <footer className="w-full border-t border-slate-200 dark:border-slate-800 bg-white/95 dark:bg-slate-950/95 backdrop-blur-xl py-12 mt-auto">
             <div className="max-w-4xl mx-auto px-6 sm:px-8">
                 <div className="flex flex-col md:flex-row justify-between items-center md:items-center gap-10">
 

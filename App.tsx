@@ -203,9 +203,9 @@ const App: React.FC = () => {
               </div>
             ))}
           </div>
-          <Footer />
         </div>
       </div>
+
 
 
       <div className="fixed bottom-8 left-1/2 -translate-x-1/2 px-8 py-4 bg-slate-900/90 backdrop-blur-2xl border border-white/5 rounded-full shadow-[0_20px_50px_rgba(0,0,0,0.5)] flex items-center gap-10 z-40 pointer-events-none sm:pointer-events-auto animate-in slide-in-from-bottom-8 duration-700">
