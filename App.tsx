@@ -4,6 +4,7 @@ import { AppState, Orientation, DeviceType, PreviewMode } from './types';
 import { DEVICES } from './constants';
 import ControlBar from './components/ControlBar';
 import DeviceFrame from './components/DeviceFrame';
+import Footer from './components/footer';
 import { IconArrowRight, IconLaptop } from './components/Icons';
 
 const App: React.FC = () => {
@@ -24,10 +25,10 @@ const App: React.FC = () => {
     const lowerUrl = url.toLowerCase();
 
     // Whitelist for local development and dev platforms
-    const isAlwaysLive = 
-      lowerUrl.includes('localhost') || 
-      lowerUrl.includes('127.0.0.1') || 
-      lowerUrl.includes('vercel.app') || 
+    const isAlwaysLive =
+      lowerUrl.includes('localhost') ||
+      lowerUrl.includes('127.0.0.1') ||
+      lowerUrl.includes('vercel.app') ||
       lowerUrl.includes('netlify.app') ||
       lowerUrl.includes('pages.dev') ||
       lowerUrl.includes('gitpod.io');
@@ -36,31 +37,31 @@ const App: React.FC = () => {
 
     // Blacklist for major domains known to send X-Frame-Options: DENY/SAMEORIGIN or strict CSP
     const isStrictlyBlocked = [
-      'instagram.com', 'chatgpt.com', 'openai.com', 'facebook.com', 
-      'amazon.com', 'google.com', 'github.com', 'twitter.com', 
-      'x.com', 'linkedin.com', 'apple.com', 'netflix.com', 
+      'instagram.com', 'chatgpt.com', 'openai.com', 'facebook.com',
+      'amazon.com', 'google.com', 'github.com', 'twitter.com',
+      'x.com', 'linkedin.com', 'apple.com', 'netflix.com',
       'youtube.com', 'reddit.com', 'pinterest.com', 'quora.com',
       'medium.com', 'discord.com', 'twitch.tv'
     ].some(domain => lowerUrl.includes(domain));
 
     if (isStrictlyBlocked) return 'snapshot';
 
-    return 'live'; 
+    return 'live';
   };
 
   const handleUrlSubmit = useCallback(async (newUrl: string) => {
     setState(prev => ({ ...prev, isChecking: true }));
-    
+
     // Simulate a brief analysis for a professional "scanning" feel
     await new Promise(resolve => setTimeout(resolve, 800));
-    
+
     const mode = await checkIframeCompatibility(newUrl);
-    
-    setState(prev => ({ 
-      ...prev, 
-      url: newUrl, 
+
+    setState(prev => ({
+      ...prev,
+      url: newUrl,
       previewMode: mode,
-      isChecking: false 
+      isChecking: false
     }));
   }, []);
 
@@ -102,7 +103,7 @@ const App: React.FC = () => {
           <div className="w-full max-w-4xl text-center space-y-12">
             <div className="space-y-8">
               <h1 className="text-7xl md:text-9xl font-black tracking-tighter text-white leading-[0.9] lg:-ml-2 animate-in fade-in slide-in-from-top-4 duration-1000">
-                Responsive <br/>
+                Responsive <br />
                 <span className="text-transparent bg-clip-text bg-gradient-to-br from-indigo-400 via-violet-400 to-cyan-400">Perfected.</span>
               </h1>
               <div className="space-y-4 animate-in fade-in slide-in-from-bottom-4 duration-1000 delay-200">
@@ -115,7 +116,7 @@ const App: React.FC = () => {
               </div>
             </div>
 
-            <form 
+            <form
               onSubmit={(e) => {
                 e.preventDefault();
                 const input = e.currentTarget.querySelector('input') as HTMLInputElement;
@@ -123,11 +124,11 @@ const App: React.FC = () => {
                 if (val) {
                   // Ensure protocol
                   if (!/^https?:\/\//i.test(val)) {
-                     if (val.startsWith('localhost') || val.startsWith('127.0.0.1')) {
-                       val = 'http://' + val;
-                     } else {
-                       val = 'https://' + val;
-                     }
+                    if (val.startsWith('localhost') || val.startsWith('127.0.0.1')) {
+                      val = 'http://' + val;
+                    } else {
+                      val = 'https://' + val;
+                    }
                   }
                   handleUrlSubmit(val);
                 }
@@ -143,7 +144,7 @@ const App: React.FC = () => {
                   disabled={state.isChecking}
                   autoFocus
                 />
-                <button 
+                <button
                   type="submit"
                   disabled={state.isChecking}
                   className={`bg-indigo-600 hover:bg-indigo-500 text-white px-8 py-4 rounded-xl font-black text-xs uppercase tracking-widest flex items-center gap-3 transition-all transform hover:translate-x-1 shadow-xl shadow-indigo-500/20 active:scale-95 ${state.isChecking ? 'opacity-50 cursor-not-allowed' : ''}`}
@@ -166,21 +167,20 @@ const App: React.FC = () => {
                 </div>
               ))}
             </div>
+            <br />
+            <br />
+
           </div>
         </main>
 
-        <footer className="p-8 text-center animate-in fade-in duration-1000 delay-700">
-          <p className="text-slate-800 text-[10px] font-black uppercase tracking-[0.3em]">
-            Visual Testing Environment
-          </p>
-        </footer>
+        <Footer />
       </div>
     );
   }
 
   return (
     <div className="min-h-screen bg-[#020617] flex flex-col overflow-hidden selection:bg-indigo-500/30">
-      <ControlBar 
+      <ControlBar
         url={state.url}
         onUrlSubmit={handleUrlSubmit}
         zoom={state.zoom}
@@ -206,8 +206,10 @@ const App: React.FC = () => {
               </div>
             ))}
           </div>
+          <Footer />
         </div>
       </div>
+
 
       <div className="fixed bottom-8 left-1/2 -translate-x-1/2 px-8 py-4 bg-slate-900/90 backdrop-blur-2xl border border-white/5 rounded-full shadow-[0_20px_50px_rgba(0,0,0,0.5)] flex items-center gap-10 z-40 pointer-events-none sm:pointer-events-auto animate-in slide-in-from-bottom-8 duration-700">
         <div className="flex items-center gap-5">
