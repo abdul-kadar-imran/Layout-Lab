@@ -19,7 +19,7 @@ const Footer: React.FC = () => {
                                 />
                             </div>
                             <h2 className="text-xl font-black tracking-tight text-slate-800 dark:text-white uppercase">
-                                QR<span className="text-indigo-600">Nest</span>
+                                Layout<span className="text-indigo-600">Lab</span>
                             </h2>
                         </div>
 
