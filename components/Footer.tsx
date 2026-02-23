@@ -21,7 +21,7 @@ const Footer: React.FC = () => {
                         </div>
 
                         <p className="text-slate-400 text-lg md:text-xl font-medium leading-relaxed italic opacity-80 mt-2">
-                            "The Best Code is the Code that goes unnoticed, because it works so flawlessly."
+                            "The Best Code is the Code that goes Unnoticed, because it works so flawlessly."
                         </p>
                     </div>
 
