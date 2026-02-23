@@ -1,9 +1,9 @@
 import React from 'react';
 import { IconInstagram, IconWhatsApp, IconQR } from './Icons';
-
+import favicon from '../favicon.png';
 const Footer: React.FC = () => {
     return (
-        <footer className="w-full bg-[#020617] border-t border-slate-900 px-8 py-12 md:py-16 mt-auto">
+        <footer className="w-full bg-[#020617] border-t border-slate-900 px-8 py-12 md:py-16 mt-auto animate-in fade-in slide-in-from-bottom-8 duration-1000 delay-[1200ms]">
             <div className="max-w-7xl mx-auto flex flex-col items-center gap-12">
 
                 {/* Top Section */}
@@ -13,7 +13,7 @@ const Footer: React.FC = () => {
                     <div className="flex flex-col items-center md:items-start text-center md:text-left gap-4 max-w-lg">
                         <div className="flex items-center gap-3 group transition-transform duration-300">
                             <div className="p-2 transition-colors">
-                                <img className="w-10 h-10" src="favicon.png" alt="png" />
+                                <img className="w-10 h-10" src={favicon} alt="png" />
                             </div>
                             <span className="text-2xl font-black tracking-tighter text-white uppercase italic">
                                 Layout<span className="text-indigo-500">Lab</span>
